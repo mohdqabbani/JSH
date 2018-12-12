@@ -1,10 +1,4 @@
 
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title></title>
-    </head>
-    <body>
                    <footer class="footer-style-two">
                 <div class="auto-container">
                     
@@ -63,8 +57,8 @@
                                             $res = mysqli_query($link, $query);
                                             while ($row = mysqli_fetch_assoc($res)) {
                                                 echo '<article class="post">';
-                                                echo "<figure class='post-thumb'><a href='blog-single.html'><img src='images/news/{$row['news_image']}' alt=''></a></figure>";
-                                                echo "<div class='text'><a href='blog-single.html'>{$row['news_title']}</a></div>";
+                                                echo "<figure class='post-thumb'><a href='blog-single.php?id={$row['news_id']}'><img src='images/news/{$row['news_image']}' alt=''></a></figure>";
+                                                echo "<div class='text'><a href='blog-single.php?id={$row['news_id']}'>{$row['news_title']}</a></div>";
                                                 echo "<div class='post-info'>{$row['news_day']}/{$row['news_month']}</div>";
                                                 echo '</article>';
                                             }
@@ -79,7 +73,7 @@
                                         <div class="footer-widget links-widget">
                                             <h2>Useful Link</h2>
                                             <ul class="links">
-                                                <li><a href="about.html">About Us</a></li>
+                                                <li><a href="about.php">About Us</a></li>
                                                 <li><a href="blog-default.php">Blog </a></li>
                                                 <li><a href="events-grid.php">Event </a></li>
                                                 <li><a href="team.html">Our Team</a></li>

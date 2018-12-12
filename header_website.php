@@ -124,7 +124,7 @@
                                 <div class="navbar-collapse collapse clearfix">
                                     <ul class="navigation clearfix">
                                         <li><a href="index.php">Home</a></li>
-                                        <li><a href="about.html">About Us</a>
+                                        <li><a href="about.php">About Us</a>
 
                                         </li>
 
@@ -154,7 +154,7 @@
                     <div class="auto-container clearfix">
                         <!--Logo-->
                         <div class="logo pull-left">
-                            <a href="index.html" class="img-responsive" title="Tali"><img src="images/logo.jpg" style="height:50px;widows:100px;" alt="" title=""></a>
+                            <a href="index.php" class="img-responsive" title="Tali"><img src="images/logo.jpg" style="height:50px;widows:100px;" alt="" title=""></a>
                         </div>
 
                         <!--Right Col-->
@@ -175,7 +175,7 @@
                                         <li><a href="index.php">Home</a>
 
                                         </li>
-                                        <li><a href="about.html">About Us</a>
+                                        <li><a href="about.php">About Us</a>
 
                                         </li>
 

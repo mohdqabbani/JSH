@@ -8,8 +8,6 @@ include './header_website.php';
     <head>
         <meta charset="utf-8">
         <title>JSH-Home</title>
-
-
     </head>
 
     <body>
@@ -254,7 +252,7 @@ HTML;
                                 echo '</div>';
                                 echo '<div class="lower-box">';
                                 echo "<div class='post-info'> {$value['event_date']}/ <span class='theme_color'>{$value['event_location']}</span></div>";
-                                echo "<h3><a href='events-single.html'>{$value['event_name']}</a></h3>";
+                                echo "<h3><a href='events-single.php?id={$value['event_id']} '>{$value['event_name']}</a></h3>";
                                 echo "<div class='text'>{$value['event_desc']}</div>";
                                 echo ' </div>';
                                 echo ' </div>';
@@ -278,7 +276,7 @@ HTML;
                             echo '<div class="content">';
                             $event_date = substr($row['event_date'], 10, 6);
                             echo "<div class='date-box'>{$event_date}</div>";
-                            echo "<h3><a href='events-single.html'>{$row['event_name']}</a></h3>";
+                            echo "<h3><a href='events-single.php?id={$row['event_id']}'>{$row['event_name']}</a></h3>";
                             echo "<div class='post-info'>{$row['event_date']} </div>";
                             echo '</div>';
                             echo'</div>';
@@ -547,7 +545,7 @@ HTML;
                 ?>
 
                 <!--Gallery Block-->
-                
+
                 <!--Gallery Block-->
 
                 <!--                                  <div class="gallery-block style-two mix all charity water col-lg-3 col-md-4 col-sm-6 col-xs-12">
@@ -663,28 +661,28 @@ HTML;
                     <div class = "single-item-carousel owl-carousel owl-theme">
 
                         <!--Testimonial Block-->
-<?php
-$SQL = "SELECT * FROM `tips`";
-$result = mysqli_query($link, $SQL);
-$userSet = array();
-while ($row = mysqli_fetch_assoc($result)) {
-    $userSet[] = $row;
-}
-foreach ($userSet as $value) {
-    echo ' <div class="testimonial-block">';
-    echo '<div class = "inner-box">';
-    echo '<div class = "content">';
-    echo "<div class = 'text'><span class = 'left-icon la la-quote-left'></span> {$value['tip_text']}  <span class = 'right-icon la la-quote-right'></span></div>";
-    echo "<h3>{$value['tip_title']}</h3>";
-    echo "<div class = 'designation'>{$value['tip_position']}</div>";
-    echo '</div>';
-    echo '<div class = "image">';
-    echo "<img src = 'images/resource/{$value['tip_image']}' alt = '' />";
-    echo '</div>';
-    echo '</div>';
-    echo '</div>';
-}
-?>
+                        <?php
+                        $SQL = "SELECT * FROM `tips`";
+                        $result = mysqli_query($link, $SQL);
+                        $userSet = array();
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            $userSet[] = $row;
+                        }
+                        foreach ($userSet as $value) {
+                            echo ' <div class="testimonial-block">';
+                            echo '<div class = "inner-box">';
+                            echo '<div class = "content">';
+                            echo "<div class = 'text'><span class = 'left-icon la la-quote-left'></span> {$value['tip_text']}  <span class = 'right-icon la la-quote-right'></span></div>";
+                            echo "<h3>{$value['tip_title']}</h3>";
+                            echo "<div class = 'designation'>{$value['tip_position']}</div>";
+                            echo '</div>';
+                            echo '<div class = "image">';
+                            echo "<img src = 'images/resource/{$value['tip_image']}' alt = '' />";
+                            echo '</div>';
+                            echo '</div>';
+                            echo '</div>';
+                        }
+                        ?>
                     </div>
 
                 </div>
@@ -729,25 +727,25 @@ foreach ($userSet as $value) {
                 <div class="row clearfix">
 
                     <!--News Block-->
-<?php
-$query = "SELECT * FROM `news`ORDER BY news_id DESC LIMIT 3";
-$result = mysqli_query($link, $query);
-while ($row = mysqli_fetch_assoc($result)) {
-    echo '<div class="news-block col-md-4 col-sm-6 col-xs-12">';
-    echo '<div class="inner-box">';
-    echo '<div class="image">';
-    //echo "<img src='' alt="" />";
-    echo '<a href="blog-single.html" class="overlay-box"><span class="icon flaticon-unlink"></span></a>';
-    echo '</div>';
-    echo '<div class="lower-content">';
-    echo "<div class='post-date'>{$row['news_month']}</div>";
-    echo "<h3><a href='blog-single.html'>{$row['news_title']}</a></h3>";
-    echo "<div class='text'>{$row['news_text']}</div>";
-    echo '</div>';
-    echo '</div>';
-    echo '</div>';
-}
-?>
+                    <?php
+                    $query = "SELECT * FROM `news`ORDER BY news_id DESC LIMIT 3";
+                    $result = mysqli_query($link, $query);
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        echo '<div class="news-block col-md-4 col-sm-6 col-xs-12">';
+                        echo '<div class="inner-box">';
+                        echo '<div class="image">';
+                        echo "<img src='images/Events/{$row['news_image']}' />";
+                        echo "<a href='blog-single.php?id={$row['news_id']}' class='overlay-box'><span class='icon flaticon-unlink'></span></a>";
+                        echo '</div>';
+                        echo '<div class="lower-content">';
+                        echo "<div class='post-date'>{$row['news_month']}</div>";
+                        echo "<h3><a href='blog-single.php?id={$row['news_id']}'>{$row['news_title']}</a></h3>";
+                        echo "<div class='text'>{$row['news_text']}</div>";
+                        echo '</div>';
+                        echo '</div>';
+                        echo '</div>';
+                    }
+                    ?>
                     <!--                        <div class="news-block col-md-4 col-sm-6 col-xs-12">
                                                 <div class="inner-box">
                                                     <div class="image">
@@ -807,13 +805,13 @@ while ($row = mysqli_fetch_assoc($result)) {
                 <div class="sponsors-outer">
                     <!--Sponsors Carousel-->                    
                     <ul class="sponsors-carousel owl-carousel owl-theme">
-<?php
-$SQL = "SELECT * FROM `partner`";
-$res = mysqli_query($link, $SQL);
-while ($row = mysqli_fetch_assoc($res)) {
-    echo "<li class='slide-item'><figure class='image-box'><a href='#'><img src='images/partners/{$row['partner_image']}' 'alt=''></a></figure></li>";
-}
-?>
+                        <?php
+                        $SQL = "SELECT * FROM `partner`";
+                        $res = mysqli_query($link, $SQL);
+                        while ($row = mysqli_fetch_assoc($res)) {
+                            echo "<li class='slide-item'><figure class='image-box'><a href='#'><img src='images/partners/{$row['partner_image']}' 'alt=''></a></figure></li>";
+                        }
+                        ?>
         <!--                            <li class="slide-item"><figure class="image-box"><a href="#"><img src="images/clients/1.png" alt=""></a></figure></li>
                         <li class="slide-item"><figure class="image-box"><a href="#"><img src="images/clients/2.png" alt=""></a></figure></li>
                         <li class="slide-item"><figure class="image-box"><a href="#"><img src="images/clients/3.png" alt=""></a></figure></li>
@@ -975,18 +973,18 @@ while ($row = mysqli_fetch_assoc($res)) {
                                                 <div class="footer-widget news-widget style-two">
                                                     <h2>Latest News</h2>
         
-<?php
-$query = "SELECT * FROM `news` ORDER BY news_id DESC LIMIT 3 ";
+        <?php
+        $query = "SELECT * FROM `news` ORDER BY news_id DESC LIMIT 3 ";
 
-$res = mysqli_query($link, $query);
-while ($row = mysqli_fetch_assoc($res)) {
-    echo '<article class="post">';
-    echo "<figure class='post-thumb'><a href='blog-single.html'><img src='images/news/{$row['news_image']}' alt=''></a></figure>";
-    echo "<div class='text'><a href='blog-single.html'>{$row['news_title']}</a></div>";
-    echo "<div class='post-info'>{$row['news_day']}/{$row['news_month']}</div>";
-    echo '</article>';
-}
-?>
+        $res = mysqli_query($link, $query);
+        while ($row = mysqli_fetch_assoc($res)) {
+            echo '<article class="post">';
+            echo "<figure class='post-thumb'><a href='blog-single.html'><img src='images/news/{$row['news_image']}' alt=''></a></figure>";
+            echo "<div class='text'><a href='blog-single.html'>{$row['news_title']}</a></div>";
+            echo "<div class='post-info'>{$row['news_day']}/{$row['news_month']}</div>";
+            echo '</article>';
+        }
+        ?>
         
         
                                                 </div>

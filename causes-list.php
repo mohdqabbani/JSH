@@ -40,7 +40,7 @@ while ($row = mysqli_fetch_assoc($res)) {
                     <!--Bread Crumb -->
                     <div class="breadcrumb-column col-md-6 col-sm-4 col-xs-12">
                         <ul class="bread-crumb clearfix">
-                            <li><a href="index-3.html">Home</a></li>
+                            <li><a href="index.php">Home</a></li>
                             <li class="active">Our magazine</li>
                         </ul>
                     </div>
@@ -67,12 +67,12 @@ while ($row = mysqli_fetch_assoc($res)) {
                                 echo '<div class="image-column col-md-4 col-sm-4 col-xs-12">';
                                 echo '<div class="image">';
                                 echo "<img src='images/magazine_image/{$row['mag_image']}' alt='' />";
-                                echo '<a href="causes-single.html" class="overlay-box"><span class="icon flaticon-unlink"></span></a>';
+                                echo "<a href='causes-single.php?id={$row['mag_id']}' class='overlay-box'><span class='icon flaticon-unlink'></span></a>";
                                 echo '</div>';
                                 echo '</div>';
                                 echo '<div class="content-column col-md-8 col-sm-8 col-xs-12">';
                                 echo '<div class="inner-column">';
-                                echo "<h3><a href='causes-single.html'>{$row['mag_name']}</a></h3>";
+                                echo "<h3><a href='causes-single.php?id={$row['mag_id']}'>{$row['mag_name']}</a></h3>";
                                 echo "<div class='text'>{$row['mag_desc']}</div>";
                                 echo '<div class="btns-box">';
                                 echo "<a href='../images/magazine_file/{$row['mag_file']}' download='{$row['mag_file']}' class='theme-btn btn-style-four'>Read more and download</a>";
@@ -118,8 +118,8 @@ while ($row = mysqli_fetch_assoc($res)) {
                                     $res = mysqli_query($link, $query);
                                     while ($row = mysqli_fetch_assoc($res)) {
                                         echo '<article class="post">';
-                                        echo "<figure class='post-thumb'><a href='blog-single.html'><img src='images/news/{$row['news_image']}' alt=''></a></figure>";
-                                        echo "<div class='text'><a href='blog-single.html'>{$row['news_title']}</a></div>";
+                                        echo "<figure class='post-thumb'><a href='blog-single.php?id={$row['news_id']}'><img src='images/news/{$row['news_image']}' alt=''></a></figure>";
+                                        echo "<div class='text'><a href='blog-single.php?id={$row['news_id']}'>{$row['news_title']}</a></div>";
                                         echo '</article>';
                                     }
                                     ?>

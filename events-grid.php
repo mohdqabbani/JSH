@@ -79,7 +79,7 @@ while ($row = mysqli_fetch_assoc($res)) {
                                     echo "<h3><a href='events-single.html'>{$value['event_name']}</a></h3>";
                                     echo "<div class='text'>{$value['event_desc']}</div>";
                                     echo '<div class="btns-box">';
-                                    echo ' <a href="events-single.html" class="theme-btn btn-style-four">More Detail</a>';
+                                    echo " <a href='events-single.php?id={$value['event_id']}' class='theme-btn btn-style-four'>More Detail</a>";
                                     echo '</div>';
                                     echo '</div>';
                                     echo '</div>';
@@ -93,7 +93,7 @@ while ($row = mysqli_fetch_assoc($res)) {
                             <div class="styled-pagination">
                                 <ul class="clearfix">
                                     <?php
-                                    for ($i = 1; $i <= round($count/2); $i++) {
+                                    for ($i = 1; $i <= round($count / 2); $i++) {
                                         echo "<li class='active'><a href='events-grid.php?page=$i'>$i</a></li>";
                                     }
                                     ?>
@@ -128,13 +128,11 @@ while ($row = mysqli_fetch_assoc($res)) {
                                     $res = mysqli_query($link, $query);
                                     while ($row = mysqli_fetch_assoc($res)) {
                                         echo '<article class="post">';
-                                        echo "<figure class='post-thumb'><a href='blog-single.html'><img src='images/news/{$row['news_image']}' alt=''></a></figure>";
-                                        echo "<div class='text'><a href='blog-single.html'>{$row['news_title']}</a></div>";
+                                        echo "<figure class='post-thumb'><a href='blog-single.php?id={$row['news_id']}'><img src='images/news/{$row['news_image']}' alt=''></a></figure>";
+                                        echo "<div class='text'><a href='blog-single.php?id={$row['news_id']}'>{$row['news_title']}</a></div>";
                                         echo '</article>';
                                     }
                                     ?>
-
-
                                 </div>
                             </div>
 
